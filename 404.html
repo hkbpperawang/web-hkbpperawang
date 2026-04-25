@@ -5,25 +5,29 @@
     <title>Mengalihkan...</title>
     <script type="text/javascript">
         (function() {
-            var currentPath = window.location.pathname.toLowerCase();
-            var currentHost = window.location.hostname.toLowerCase();
+            var path = window.location.pathname;
+            var host = window.location.hostname;
             
-            var targetHome = "https://hkbpperawang.org/";
-            
-            if (currentHost.indexOf("www.") === 0) {
-                window.location.replace(targetHome);
+            var cleanPath = path.toLowerCase();
+            if (cleanPath.endsWith('/')) {
+                cleanPath = cleanPath.slice(0, -1);
+            }
+
+            if (cleanPath === "/warta-acara") {
+                window.location.replace("https://hkbpperawang.org/warta-acara");
                 return;
             }
 
-            if (currentPath.indexOf("/warta-acara") !== -1) {
-                return; 
+            if (host.indexOf("www.") === 0) {
+                window.location.replace("https://hkbpperawang.org" + path);
+                return;
             }
 
-            window.location.replace(targetHome);
+            window.location.replace("https://hkbpperawang.org/");
         })();
     </script>
 </head>
 <body>
-    <p>Sedang mengalihkan, silakan tunggu...</p>
+    <p>Sedang mengalihkan ke halaman yang benar...</p>
 </body>
 </html>
